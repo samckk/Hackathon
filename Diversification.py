@@ -6,7 +6,13 @@ import random
 import pandas as pd
 
 def equalWeightsSP500Select(features):
-        
+    """
+    1. Get the number of stocks in each sector
+    2. Allocate capital according to the proportion of stocks in that sector
+    3. Randomly pick different stocks in the sector
+    4. Rebalance every time when there is changes in S&P constituents and pick different stocks to reduce variance
+    """
+
     # Get the inclusion matrix
     inclusionMatrix = getTickersSP500(ticker=features.tickers, startDate=features.startDate, endDate=features.endDate, asMatrix=True)
     
